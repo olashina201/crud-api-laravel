@@ -30,4 +30,17 @@ class CrudApi extends Controller
         }
         return ["Result" => "and error occured"];
     }
+
+    function updatePhoneBook(Request $req, $id)
+    {
+        $phoneBook = PhoneBook::find($id);
+        $phoneBook->name = $req->name;
+        $phoneBook->age = $req->age;
+        $phoneBook->contact = $req->contact;
+        $result = $phoneBook->save();
+        if ($result) {
+            return ["Result" => $result];
+        }
+        return ["Result" => "and error occured"];
+    }
 }
