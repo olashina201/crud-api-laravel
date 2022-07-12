@@ -43,4 +43,14 @@ class CrudApi extends Controller
         }
         return ["Result" => "and error occured"];
     }
+
+    function deletePhoneBook($id)
+    {
+        $phoneBook = PhoneBook::find($id);
+        $result = $phoneBook->delete();
+        if ($result) {
+            return ["Result" => $result];
+        }
+        return ["Result" => "and error occured"];
+    }
 }

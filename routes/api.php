@@ -22,4 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get("phonebooks", [CrudApi::class, 'list']);
 Route::get("phonebooks/{id}", [CrudApi::class, 'getSinglePhoneBook']);
 Route::post("phonebook", [CrudApi::class, 'getSinglePhoneBook']);
-Route::put("phonebook", [CrudApi::class, 'updatePhoneBook']);
+Route::put("phonebook/{id}", [CrudApi::class, 'updatePhoneBook']);
+Route::delete("phonebook/{id}", [CrudApi::class, 'deletePhoneBook']);
