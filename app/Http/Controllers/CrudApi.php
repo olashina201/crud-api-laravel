@@ -10,7 +10,8 @@ class CrudApi extends Controller
     //
     function list()
     {
-        return PhoneBook::all();
+        // return PhoneBook::all();
+        return ["Result", "Hello World"];
     }
 
     function getSinglePhoneBook($id)
