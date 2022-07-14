@@ -27,7 +27,8 @@ class CrudApi extends Controller
         $phoneBook->contact = $req->contact;
         $result = $phoneBook->save();
         if ($result) {
-            return ["Result" => $result];
+            return response($result, 200);
+            // return ["Result" => $result];
         }
         return ["Result" => "and error occured"];
     }
