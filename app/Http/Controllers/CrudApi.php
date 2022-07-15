@@ -10,8 +10,7 @@ class CrudApi extends Controller
     //
     function list()
     {
-        // return PhoneBook::all();
-        return ["Result", "Hello World"];
+        return PhoneBook::all();
     }
 
     function getSinglePhoneBook($id)
@@ -22,8 +21,8 @@ class CrudApi extends Controller
     function addPhoneBook(Request $req)
     {
         $phoneBook = new PhoneBook;
-        $phoneBook->name = $req->name;
-        $phoneBook->age = $req->age;
+        $phoneBook->firstname = $req->firstname;
+        $phoneBook->lastname = $req->lastname;
         $phoneBook->contact = $req->contact;
         $result = $phoneBook->save();
         if ($result) {
