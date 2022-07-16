@@ -26,8 +26,9 @@ class CrudApi extends Controller
         $phoneBook->contact = $req->contact;
         $result = $phoneBook->save();
         if ($result) {
-            return response($result, 200);
-            // return ["Result" => $result];
+            return response()->json([
+                'data' => $phoneBook
+            ]);
         }
         return ["Result" => "and error occured"];
     }
@@ -35,12 +36,14 @@ class CrudApi extends Controller
     function updatePhoneBook(Request $req, $id)
     {
         $phoneBook = PhoneBook::find($id);
-        $phoneBook->name = $req->name;
-        $phoneBook->age = $req->age;
+        $phoneBook->firstname = $req->firstname;
+        $phoneBook->lastname = $req->lastname;
         $phoneBook->contact = $req->contact;
         $result = $phoneBook->save();
         if ($result) {
-            return ["Result" => $result];
+            return response()->json([
+                'data' => $phoneBook
+            ]);
         }
         return ["Result" => "and error occured"];
     }
@@ -50,7 +53,7 @@ class CrudApi extends Controller
         $phoneBook = PhoneBook::find($id);
         $result = $phoneBook->delete();
         if ($result) {
-            return ["Result" => $result];
+            return ["data" => "phonebook deleted successfully"];
         }
         return ["Result" => "and error occured"];
     }

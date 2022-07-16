@@ -19,8 +19,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get("phonebooks", [CrudApi::class, 'list']);
-Route::get("phonebooks/{id}", [CrudApi::class, 'getSinglePhoneBook']);
-Route::post("phonebook", [CrudApi::class, 'addPhoneBook']);
-Route::put("phonebook/{id}", [CrudApi::class, 'updatePhoneBook']);
-Route::delete("phonebook/{id}", [CrudApi::class, 'deletePhoneBook']);
+Route::prefix("phonebook")->group( function(){
+    Route::get("", [CrudApi::class, 'list']);
+    Route::get("/{id}", [CrudApi::class, 'getSinglePhoneBook']);
+    Route::post("", [CrudApi::class, 'addPhoneBook']);
+    Route::put("/{id}", [CrudApi::class, 'updatePhoneBook']);
+    Route::delete("/{id}", [CrudApi::class, 'deletePhoneBook']);
+});
